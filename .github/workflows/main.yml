@@ -19,7 +19,6 @@ jobs:
             math: ref
           - os: ubuntu-latest
             generator_option: '-j4'
-            math: [simd,ref]
           - os: macos-latest
             generator_option: '-j4'
             
