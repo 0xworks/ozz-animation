@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         build_type: [Release, Debug]
-        math: [simd]
+        math: [simd,ref]
         include:
           - os: ubuntu-latest
             generator_option: '-j4'
