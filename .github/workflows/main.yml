@@ -13,7 +13,7 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         build_type: [Release, Debug]
-        math: [simd,ref]
+        simd: [simd, reference]
         include:
           - os: ubuntu-latest
             generator_option: '-j4'
@@ -21,7 +21,7 @@ jobs:
             generator_option: '-j4'
             
     env:
-      ozz_simd_ref: ${{ matrix.math == 'ref' }}
+      ozz_simd_ref: ${{ matrix.simd == 'reference' }}
 
     steps:
     - uses: actions/checkout@v2
@@ -35,7 +35,6 @@ jobs:
       run: |
         cmake --version
         cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -Dozz_build_simd_ref=${{env.ozz_simd_ref}}
-
     - name: Build
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --use-stderr -- ${{matrix.generator_option}}
