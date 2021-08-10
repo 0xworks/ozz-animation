@@ -13,12 +13,15 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         build_type: [Release, Debug]
-        ozz_simd_ref: [0,1]
+        simd: [simd, reference]
         include:
           - os: ubuntu-latest
             generator_option: '-j4'
           - os: macos-latest
             generator_option: '-j4'
+            
+    env:
+      ozz_simd_ref: ${{ matrix.simd == 'reference' }}
 
     steps:
     - uses: actions/checkout@v2
@@ -31,7 +34,7 @@ jobs:
       # Configure CMake in a 'build' subdirectory.
       run: |
         cmake --version
-        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -Dozz_build_simd_ref=${{matrix.ozz_simd_ref}}
+        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -Dozz_build_simd_ref=${{env.ozz_simd_ref}}
 
     - name: Build
       # Build your program with the given configuration
