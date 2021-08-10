@@ -13,6 +13,9 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         build_type: [Release, Debug]
+        include:
+          - os: ubuntu-latest
+            generator_option: '-j4'
 
     steps:
     - uses: actions/checkout@v2
@@ -29,10 +32,10 @@ jobs:
 
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --use-stderr -- -j4
+      run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --use-stderr -- ${{matrix.generator_option}}
 
     - name: Test
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.
-      run: ctest -C ${{matrix.build_type}} --output-on-failure -- -j4
+      run: ctest -C ${{matrix.build_type}} --output-on-failure -- ${{matrix.generator_option}}
       
