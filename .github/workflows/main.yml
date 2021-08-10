@@ -16,8 +16,6 @@ jobs:
         math: [simd]
         include:
           - os: ubuntu-latest
-            math: ref
-          - os: ubuntu-latest
             generator_option: '-j4'
           - os: macos-latest
             generator_option: '-j4'
