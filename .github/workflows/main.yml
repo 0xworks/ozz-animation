@@ -17,7 +17,6 @@ jobs:
         include:
           - math: ref
             os: ubuntu-latest
-            build_type: Debug
             
     env:
       ozz_simd_ref: ${{ matrix.math == 'ref' }}
