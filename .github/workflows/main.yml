@@ -17,6 +17,7 @@ jobs:
         include:
           - math: ref
             os: ubuntu-latest
+            build_type: Debug
           - os: ubuntu-latest
             generator_option: '-j4'
           - os: macos-latest
