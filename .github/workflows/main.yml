@@ -37,7 +37,7 @@ jobs:
     
     - name: install windows fbx sdk
       if: matrix.os == 'windows-latest'
-      shell: pwsh
+      shell: powershell
       run: |
         md fbx
         cd fbx
