@@ -35,8 +35,9 @@ jobs:
         sudo chmod -R 755 /usr/local/include
         cd ..
     
-    - name: install linux fbx sdk
+    - name: install windows fbx sdk
       if: matrix.os == 'windows-latest'
+      shell: powershell
       run: |
         md fbx
         cd fbx
