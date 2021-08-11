@@ -13,13 +13,7 @@ jobs:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
         build_type: [Release, Debug]
-        math: [simd]
-        include:
-          - math: ref
-            os: ubuntu-latest
-            
-    env:
-      ozz_simd_ref: ${{ matrix.math == 'ref' }}
+        option: [ref, shared]
 
     steps:
     - uses: actions/checkout@v2
@@ -32,7 +26,7 @@ jobs:
       # Configure CMake in a 'build' subdirectory.
       run: |
         cmake --version
-        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -Dozz_build_simd_ref=${{env.ozz_simd_ref}}
+        cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -DBUILD_SHARED_LIBS=${{ matrix.option == 'shared' }} -Dozz_build_simd_ref=${{ matrix.option == 'ref' }}
     - name: Build
       # Build your program with the given configuration
       run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --use-stderr
