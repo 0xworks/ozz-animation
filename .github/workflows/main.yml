@@ -15,8 +15,8 @@ jobs:
         build_type: [Release, Debug]
         math: [simd]
         include:
-          - os: ubuntu-latest
-            math: ref
+          - math: ref
+            os: ubuntu-latest
           - os: ubuntu-latest
             generator_option: '-j4'
           - os: macos-latest
