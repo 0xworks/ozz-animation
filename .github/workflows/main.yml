@@ -18,10 +18,6 @@ jobs:
           - math: ref
             os: ubuntu-latest
             build_type: Debug
-          - os: ubuntu-latest
-            generator_option: '-j4'
-          - os: macos-latest
-            generator_option: '-j4'
             
     env:
       ozz_simd_ref: ${{ matrix.math == 'ref' }}
@@ -29,9 +25,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install mesa dependency
+      if: matrix.os == 'ubuntu-latest'
       run: |
         sudo apt-get install libgl1-mesa-dev libglu1-mesa-dev
-      if: matrix.os == 'ubuntu-latest'
 
     - name: Configure CMake
       # Configure CMake in a 'build' subdirectory.
@@ -40,10 +36,10 @@ jobs:
         cmake -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{matrix.build_type}} -Dozz_build_simd_ref=${{env.ozz_simd_ref}}
     - name: Build
       # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --use-stderr -- ${{matrix.generator_option}}
+      run: cmake --build ${{github.workspace}}/build --config ${{matrix.build_type}} --use-stderr
 
     - name: Test
       working-directory: ${{github.workspace}}/build
       # Execute tests defined by the CMake configuration.
-      run: ctest -C ${{matrix.build_type}} --output-on-failure -- ${{matrix.generator_option}}
+      run: ctest -C ${{matrix.build_type}} --output-on-failure
       
