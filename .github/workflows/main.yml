@@ -37,11 +37,10 @@ jobs:
     
     - name: install windows fbx sdk
       if: matrix.os == 'windows-latest'
-      shell: powershell
       run: |
         md fbx
         cd fbx
-        Start-FileDownload "http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20195/fbx20195_fbxsdk_vs2017_win.exe" "fbxsdk.exe"
+        wget "http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20195/fbx20195_fbxsdk_vs2017_win.exe" "fbxsdk.exe"
         Start-Process -FilePath "fbxsdk.exe" /S -Wait
         cd ..
         
