@@ -37,12 +37,11 @@ jobs:
     
     - name: Install windows fbx sdk
       if: matrix.option == 'fbx' && matrix.os == 'windows-latest'
-      shell: cmd
       run: |
         md fbx
         cd fbx
         wget 'http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20195/fbx20195_fbxsdk_vs2017_win.exe' -O 'fbxsdk.exe'
-        call fbxsdk.exe /S
+        Start-Process -FilePath 'fbxsdk.exe' /S -Wait
         cd ..
         
     - name: Install macos fbx sdk
