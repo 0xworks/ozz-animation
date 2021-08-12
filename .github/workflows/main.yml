@@ -14,8 +14,6 @@ jobs:
         os: [macos-latest, windows-latest, ubuntu-latest]
         build_type: [Debug]
         option: [default, ref, shared, no_sample, no_data, fbx, no_gltf, no_tests]
-        include:
-          - build_type: Release
 
     steps:
     - uses: actions/checkout@v2
