@@ -12,8 +12,8 @@ jobs:
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
-        build_type: [Debug] # Release, 
-        option: [default, fbx] # ref, shared, no_sample, no_data,
+        build_type: [Release, Debug]
+        option: [default, ref, shared, no_sample, no_data, fbx]
 
     steps:
     - uses: actions/checkout@v2
