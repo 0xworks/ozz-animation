@@ -118,9 +118,13 @@ function(FindFbxLibrariesGeneric _FBX_ROOT_DIR _OUT_FBX_LIBRARIES _OUT_FBX_LIBRA
   # Set search path.
   set(FBX_SEARCH_LIB_PATH "${_FBX_ROOT_DIR}lib/${FBX_CP_PATH}/${FBX_PROCESSOR_PATH}")
 
+message("FBX_SEARCH_LIB_PATH: ${FBX_SEARCH_LIB_PATH}")
+
   find_library(FBX_LIB
     ${FBX_SEARCH_LIB_NAMES}
     HINTS "${FBX_SEARCH_LIB_PATH}/release/")
+
+    message("FBX_LIB: ${FBX_LIB}")
 
   if(FBX_LIB)
     # Searches debug version also
