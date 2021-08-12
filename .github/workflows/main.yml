@@ -15,15 +15,15 @@ jobs:
         build_type: [Debug]
         option: [default, ref, shared, no_sample, no_data, fbx, no_gltf, no_tests]
         include:
-          - build_type: Release
+          - os: macos-latest
+            build_type: Release
             option: fbx
-            os: macos-latest
-          - build_type: Release
+          - os: windows-latest
+            build_type: Release
             option: fbx
-            os: windows-latest
-          - build_type: Release
+          - os: ubuntu-latest
+            build_type: Release
             option: fbx
-            os: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
