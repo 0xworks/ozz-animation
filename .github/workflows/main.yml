@@ -41,9 +41,8 @@ jobs:
       run: |
         md fbx
         cd fbx
-        Invoke-WebRequest -Uri 'http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20195/fbx20195_fbxsdk_vs2017_win.exe' -OutFile 'fbxsdk.exe'
+        wget 'http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20195/fbx20195_fbxsdk_vs2017_win.exe' -O 'fbxsdk.exe'
         dir
-        Start-Process -FilePath 'fbxsdk.exe' /s -Wait
         cd ..
         
     - name: install macos fbx sdk
