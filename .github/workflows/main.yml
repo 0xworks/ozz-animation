@@ -28,7 +28,7 @@ jobs:
       run: |
         mkdir fbx
         cd fbx
-        sudo wget 'http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20192/fbx20192_fbxsdk_linux.tar.gz' -O 'fbx.tar.gz'
+        sudo wget 'https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-2/fbx20202_fbxsdk_linux.tar.gz' -O 'fbx.tar.gz'
         sudo tar -xf 'fbx.tar.gz'
         (yes yes | sudo ./*_fbxsdk_linux /usr/local) || true
         sudo chmod -R 755 /usr/local/lib
@@ -40,9 +40,8 @@ jobs:
       run: |
         md fbx
         cd fbx
-        Start-BitsTransfer -Source 'http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20195/fbx20195_fbxsdk_vs2017_win.exe' -Destination 'fbxsdk.exe'
+        Start-BitsTransfer -Source 'https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-2/fbx20202_fbxsdk_vs2019_win.exe' -Destination 'fbxsdk.exe'
         Start-Process -FilePath 'fbxsdk.exe' /S -Wait
-        Get-ChildItem -Path 'C:/Program Files/Autodesk/FBX/FBX SDK/2019.5/lib/'
         cd ..
         
     - name: Install macos fbx sdk
@@ -50,7 +49,7 @@ jobs:
       run: |
         mkdir fbx
         cd fbx
-        sudo wget 'http://www.autodesk.com/content/dam/autodesk/www/adn/fbx/20192/fbx20192_fbxsdk_clang_mac.pkg.tgz' -O 'fbx.tgz'
+        sudo wget 'https://www.autodesk.com/content/dam/autodesk/www/adn/fbx/2020-2/fbx20202_fbxsdk_clang_mac.pkg.tgz' -O 'fbx.tgz'
         sudo tar -xf 'fbx.tgz'
         sudo installer -pkg *_fbxsdk_clang_macos.pkg -target /
         cd ..
