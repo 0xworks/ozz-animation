@@ -308,9 +308,6 @@ find_path(FBX_INCLUDE_DIR
   PATHS ${FBX_SEARCH_PATHS})
 
 if(FBX_INCLUDE_DIR)
-
-message("fbx include dir: ${FBX_INCLUDE_DIR}")
-
   # Deduce SDK root directory.
   set(FBX_ROOT_DIR "${FBX_INCLUDE_DIR}/")
 
