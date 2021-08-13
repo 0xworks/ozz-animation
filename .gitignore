@@ -1,3 +1,10 @@
 build/
 build-cc/
 .DS_Store
+
+# Hazel-specific
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+bin
+bin-int
