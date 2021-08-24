@@ -78,6 +78,8 @@ struct RawAnimation {
     typedef math::Float3 Value;
     Value value;
 
+    TranslationKey(float time_ = {}, Value value_ = {}) : time(time_), value(value_) {}
+
     // Provides identity transformation for a translation key.
     static math::Float3 identity() { return math::Float3::zero(); }
   };
@@ -91,6 +93,8 @@ struct RawAnimation {
     typedef math::Quaternion Value;
     math::Quaternion value;
 
+    RotationKey(float time_ = {}, Value value_ = {}) : time(time_), value(value_) {}
+
     // Provides identity transformation for a rotation key.
     static math::Quaternion identity() { return math::Quaternion::identity(); }
   };
@@ -103,6 +107,8 @@ struct RawAnimation {
     // Key frame value.
     typedef math::Float3 Value;
     math::Float3 value;
+
+    ScaleKey(float time_ = {}, Value value_ = {}) : time(time_), value(value_) {}
 
     // Provides identity transformation for a scale key.
     static math::Float3 identity() { return math::Float3::one(); }
